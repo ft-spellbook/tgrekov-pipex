@@ -6,7 +6,7 @@
 /*   By: tgrekov <tgrekov@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 12:01:21 by tgrekov           #+#    #+#             */
-/*   Updated: 2024/05/02 11:51:26 by tgrekov          ###   ########.fr       */
+/*   Updated: 2024/05/02 12:12:09 by tgrekov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,18 @@
 #include "../../../includes/libft/ft_printf/ft_printf.h"
 #include "../../../includes/libft/get_next_line_bonus.h"
 #include "../../../includes/libft/libft.h"
+
+static int	_cmp(const char *s1, const char *s2)
+{
+	int	len;
+	int	len2;
+
+	len = ft_strlen(s1);
+	len2 = ft_strlen(s2) - 1;
+	if (len2 > len)
+		len = len2;
+	return (ft_strncmp(s1, s2, len));
+}
 
 /**
  * @brief Capture multiline input from @p stdin and write to a pipe readable
@@ -47,7 +59,7 @@ int	here_doc(char *limiter, int *in_out)
 		if (!line)
 			return ((int) err("get_next_line()", 0));
 		len = ft_strlen(line);
-		if (len - 1 && !ft_strncmp(limiter, line, len - 1))
+		if (!_cmp(limiter, line))
 			break ;
 		if (write(fds[1], line, len) < 0)
 			return ((int) err("write()", 0));
