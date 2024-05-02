@@ -6,7 +6,7 @@
 /*   By: tgrekov <tgrekov@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 12:01:21 by tgrekov           #+#    #+#             */
-/*   Updated: 2024/05/02 10:29:15 by tgrekov          ###   ########.fr       */
+/*   Updated: 2024/05/02 11:51:26 by tgrekov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int	here_doc(char *limiter, int *in_out)
 		if (!line)
 			return ((int) err("get_next_line()", 0));
 		len = ft_strlen(line);
-		if (!ft_strncmp(limiter, line, len - 1))
+		if (len - 1 && !ft_strncmp(limiter, line, len - 1))
 			break ;
 		if (write(fds[1], line, len) < 0)
 			return ((int) err("write()", 0));
