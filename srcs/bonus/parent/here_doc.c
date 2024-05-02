@@ -1,0 +1,60 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   here_doc.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tgrekov <tgrekov@student.hive.fi>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/04/26 12:01:21 by tgrekov           #+#    #+#             */
+/*   Updated: 2024/05/02 10:29:15 by tgrekov          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+/**
+ * @file here_doc.c
+ * @dontinclude here_doc.c
+ * @line /\* *********
+ * @until /\* *********
+ */
+
+#include <unistd.h>
+#include "../../mandatory/utils/utils.h"
+#include "../../../includes/libft/ft_printf/ft_printf.h"
+#include "../../../includes/libft/get_next_line_bonus.h"
+#include "../../../includes/libft/libft.h"
+
+/**
+ * @brief Capture multiline input from @p stdin and write to a pipe readable
+ * from @p in_out[0] until a line containing only @p limiter is reached.
+ * 
+ * @param limiter Character to stop reading on
+ * @param in_out Input filedes, output filedes
+ * @retval int @p 0 on failure, @p 1 on success
+ */
+int	here_doc(char *limiter, int *in_out)
+{
+	int		fds[2];
+	char	*line;
+	size_t	len;
+
+	if (pipe(fds) == -1)
+		return ((int) err("pipe()", 0));
+	in_out[0] = fds[0];
+	while (1)
+	{
+		ft_printf("pipex heredoc> ");
+		line = get_next_line(0);
+		if (!line)
+			return ((int) err("get_next_line()", 0));
+		len = ft_strlen(line);
+		if (!ft_strncmp(limiter, line, len - 1))
+			break ;
+		if (write(fds[1], line, len) < 0)
+			return ((int) err("write()", 0));
+		free(line);
+	}
+	free(line);
+	if (close(fds[1]))
+		return ((int) err("close()", 0));
+	return (1);
+}

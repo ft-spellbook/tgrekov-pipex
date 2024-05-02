@@ -1,0 +1,18 @@
+name: Generate Doxygen documentation and deploy to pages
+
+on:
+  push:
+  repository_dispatch:
+    types: [global-update]
+
+jobs:
+  docs:
+    permissions:
+      pages: write
+      id-token: write
+    uses: ft-spellbook/doxygen-global/.github/workflows/doxygen-pages.yml@master
+    with:
+      name: "tgrekov-pipex"
+      brief: "HIVE pipex May 2024"
+      extract_static: "YES"
+      hide_undoc_members: "YES"
