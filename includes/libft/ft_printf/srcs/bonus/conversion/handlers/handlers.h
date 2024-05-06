@@ -10,13 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-/**
- * @file srcs/bonus/conversion/handlers/handlers.h
- * @dontinclude srcs/bonus/conversion/handlers/handlers.h
- * @line /\* *********
- * @until /\* *********
- */
-
 #ifndef HANDLERS_H
 # define HANDLERS_H
 

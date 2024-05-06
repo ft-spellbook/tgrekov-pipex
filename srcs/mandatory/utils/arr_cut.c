@@ -10,25 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-/**
- * @file arr_cut.c
- * @dontinclude arr_cut.c
- * @line /\* *********
- * @until /\* *********
- */
-
 #include <stdlib.h>
 #include "utils.h"
 
-/**
- * @brief Create new null-terminated array
- * containing first @p len elements of @p arr.
- * 
- * @param arr Source array to duplicate
- * @param len Number of elements to duplicate
- * @retval void** Null-terminated array containing
- * first @p len elements of @p arr
- */
 void	**arr_cut(void **arr, int len)
 {
 	void	**arr2;

@@ -10,13 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-/**
- * @file srcs/mandatory/utils.h
- * @dontinclude srcs/mandatory/utils.h
- * @line /\* *********
- * @until /\* *********
- */
-
 #ifndef UTILS_H
 # define UTILS_H
 
