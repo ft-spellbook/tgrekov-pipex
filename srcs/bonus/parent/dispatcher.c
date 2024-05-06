@@ -6,7 +6,7 @@
 /*   By: tgrekov <tgrekov@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/23 08:18:15 by tgrekov           #+#    #+#             */
-/*   Updated: 2024/05/06 08:13:30 by tgrekov          ###   ########.fr       */
+/*   Updated: 2024/05/06 08:16:42 by tgrekov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,9 @@
  * @until /\* *********
  */
 
+#include <stdlib.h>
 #include <unistd.h>
 #include "../../mandatory/utils/utils.h"
-#include "../../../includes/libft/libft.h"
-#include "../../../includes/libft/ft_printf/ft_printf.h"
 
 void	dispatch(char **paths, char *args, char **envp, int *in_out);
 char	**args_split(char const *s);
