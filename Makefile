@@ -81,10 +81,10 @@ $(AR_NAME): $(OBJS)
 	@ar rcs $(AR_NAME) $(OBJS_BONUS)
 	@touch .bonus
 	@echo "$(GREY)$(SOFT_NAME) $(DEFAULT)| $(GREEN)Bonus part done$(DEFAULT)"
-
-bonus: .bonus
 	@$(CC) $(CFLAGS) $(AR_NAME) -o $(NAME)
 	@echo "$(GREY)$(SOFT_NAME) $(DEFAULT)| $(GREEN)Bonus executable done$(DEFAULT)"
+
+bonus: .bonus
 
 ################################################################################
 
