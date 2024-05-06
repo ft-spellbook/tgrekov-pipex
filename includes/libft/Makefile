@@ -79,8 +79,9 @@ OBJS_DEBUG_BONUS = $(SRC_BONUS_NAMES:%.c=$(OBJ_DIR)debug/$(SRC_PATH_BONUS)%.o)
 HEADERS = $(addprefix $(SRC_DIR)$(SRC_PATH_MANDATORY), $(HEADER_NAMES))
 HEADERS_BONUS = $(addprefix $(SRC_DIR)$(SRC_PATH_BONUS), $(HEADER_BONUS_NAMES))
 
-.PHONY: all bonus debug_set debug debug_bonus \
-clean fclean re
+.PHONY: all bonus \
+debug_set debug debug_bonus \
+clean .clean fclean re
 
 $(OBJ_DIR)%.o \
 $(OBJ_DIR)debug/%.o: $(SRC_DIR)%.c
