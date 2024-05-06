@@ -6,7 +6,7 @@
 /*   By: tgrekov <tgrekov@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 13:59:01 by tgrekov           #+#    #+#             */
-/*   Updated: 2024/05/02 11:43:57 by tgrekov          ###   ########.fr       */
+/*   Updated: 2024/05/06 08:24:08 by tgrekov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,12 +75,12 @@ int	main(int argc, char **argv, char **envp)
 	int		trunc_append;
 
 	_input(argc, argv, &is_here_doc, &trunc_append);
+	in_out[1] = _open(argv[argc - 1], O_WRONLY | O_CREAT | trunc_append,
+			S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH);
 	if (!is_here_doc)
 		in_out[0] = _open(argv[1], O_RDONLY, 0);
 	else if (!here_doc(argv[2], in_out))
 		return (1);
-	in_out[1] = _open(argv[argc - 1], O_WRONLY | O_CREAT | trunc_append,
-			S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH);
 	paths = get_paths(envp);
 	if (!paths)
 	{
