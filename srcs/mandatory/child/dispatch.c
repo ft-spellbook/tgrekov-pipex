@@ -6,7 +6,7 @@
 /*   By: tgrekov <tgrekov@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 13:32:09 by tgrekov           #+#    #+#             */
-/*   Updated: 2024/05/02 10:29:00 by tgrekov          ###   ########.fr       */
+/*   Updated: 2024/05/06 13:52:48 by tgrekov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ static int	_dispatch(char **paths, char **argv, char **envp, int *in_out)
 	if (dup2(in_out[1], 1) == -1)
 		return ((int) err("dup2()", (void *) 1));
 	execve(cmd, argv, envp);
+	free(cmd);
 	ft_printf("%>execve() failed for \"%s\": %s\n", 2, cmd, strerror(errno));
 	return (1);
 }
