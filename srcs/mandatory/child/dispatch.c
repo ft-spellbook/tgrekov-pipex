@@ -6,7 +6,7 @@
 /*   By: tgrekov <tgrekov@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 13:32:09 by tgrekov           #+#    #+#             */
-/*   Updated: 2024/05/06 13:52:48 by tgrekov          ###   ########.fr       */
+/*   Updated: 2024/05/06 14:26:14 by tgrekov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,8 @@ void	dispatch(char **paths, char *args, char **envp, int *in_out)
 	char	**child_argv;
 	int		code;
 
+	if (in_out[0] == -1 || in_out[1] == -1)
+		exit(1);
 	code = 1;
 	child_argv = args_split(args);
 	if (child_argv)

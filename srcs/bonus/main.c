@@ -6,7 +6,7 @@
 /*   By: tgrekov <tgrekov@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 13:59:01 by tgrekov           #+#    #+#             */
-/*   Updated: 2024/05/06 14:05:30 by tgrekov          ###   ########.fr       */
+/*   Updated: 2024/05/06 14:28:06 by tgrekov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,10 +60,9 @@ static int	_open(char *name, int flags, int mode)
 	int	fd;
 
 	fd = open(name, flags, mode);
-	if (fd >= 0)
-		return (fd);
-	ft_printf("%>Failed to open \"%s\": %s\n", 2, name, strerror(errno));
-	exit(1);
+	if (fd == -1)
+		ft_printf("%>Failed to open \"%s\": %s\n", 2, name, strerror(errno));
+	return (fd);
 }
 
 int	main(int argc, char **argv, char **envp)
