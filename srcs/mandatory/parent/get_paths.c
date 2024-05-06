@@ -6,7 +6,7 @@
 /*   By: tgrekov <tgrekov@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 05:53:12 by tgrekov           #+#    #+#             */
-/*   Updated: 2024/05/06 14:11:47 by tgrekov          ###   ########.fr       */
+/*   Updated: 2024/05/06 14:14:55 by tgrekov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,6 @@ char	**get_paths(char **envp)
 				return (err("malloc()", 0));
 			paths_uniq = (char **) dedupe(
 					(void **) paths,
-					arr_len((void **) paths),
 					compare, copy);
 			arr_free((void **) paths);
 			return (paths_uniq);

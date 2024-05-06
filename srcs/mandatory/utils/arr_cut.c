@@ -6,7 +6,7 @@
 /*   By: tgrekov <tgrekov@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 06:40:30 by tgrekov           #+#    #+#             */
-/*   Updated: 2024/05/02 10:27:32 by tgrekov          ###   ########.fr       */
+/*   Updated: 2024/05/06 14:18:39 by tgrekov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ void	**arr_cut(void **arr, int len)
 	arr2 = malloc(sizeof(void *) * len);
 	if (!arr2)
 		return (err("malloc()", 0));
+	arr2[len] = 0;
 	while (len--)
 		arr2[len] = arr[len];
 	return (arr2);
