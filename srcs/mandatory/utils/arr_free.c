@@ -6,7 +6,7 @@
 /*   By: tgrekov <tgrekov@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 07:52:00 by tgrekov           #+#    #+#             */
-/*   Updated: 2024/05/02 10:27:37 by tgrekov          ###   ########.fr       */
+/*   Updated: 2024/05/06 14:03:44 by tgrekov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ void	**arr_free(void **arr)
 {
 	int	i;
 
+	if (!arr)
+		return (0);
 	i = 0;
 	while (arr[i])
 		free(arr[i++]);
