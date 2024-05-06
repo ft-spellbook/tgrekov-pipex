@@ -6,7 +6,7 @@
 /*   By: tgrekov <tgrekov@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 13:47:02 by tgrekov           #+#    #+#             */
-/*   Updated: 2024/05/02 10:28:54 by tgrekov          ###   ########.fr       */
+/*   Updated: 2024/05/06 13:59:26 by tgrekov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,12 @@ char	*get_cmd(char **paths, char *name)
 {
 	char	*cmd;
 
+	cmd = ft_strdup(name);
+	if (!cmd)
+		return (err("malloc() failed while assembling path to cmd", 0));
+	if (!access(cmd, F_OK))
+		return (cmd);
+	free(cmd);
 	while (*paths)
 	{
 		cmd = ft_strjoin(*paths, name);
