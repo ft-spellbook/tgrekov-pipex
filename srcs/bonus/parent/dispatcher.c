@@ -6,7 +6,7 @@
 /*   By: tgrekov <tgrekov@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/23 08:18:15 by tgrekov           #+#    #+#             */
-/*   Updated: 2024/05/06 08:16:42 by tgrekov          ###   ########.fr       */
+/*   Updated: 2024/05/06 15:06:18 by tgrekov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,5 +97,6 @@ int	dispatcher(int n, char ***str_arrs, int *in_out)
 			break ;
 		i++;
 	}
+	free(pids);
 	return (wait_all(pids, i, !last_out));
 }
