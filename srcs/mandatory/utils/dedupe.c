@@ -6,7 +6,7 @@
 /*   By: tgrekov <tgrekov@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 06:05:01 by tgrekov           #+#    #+#             */
-/*   Updated: 2024/05/06 14:19:09 by tgrekov          ###   ########.fr       */
+/*   Updated: 2024/05/06 14:58:43 by tgrekov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@
  */
 
 #include <stdlib.h>
+#include "../../../includes/libft/libft.h"
 #include "utils.h"
-#include <stdio.h>
 
 /**
  * @brief Create new null-terminated array containing only unique values from
@@ -43,7 +43,7 @@ void	**dedupe(void **arr,
 	int		i2;
 
 	len = arr_len(arr);
-	arr2 = malloc(sizeof(void *) * (len + 1));
+	arr2 = ft_calloc(len + 1, sizeof(void *));
 	if (!arr2)
 		return (err("malloc()", 0));
 	i = 0;
@@ -57,7 +57,6 @@ void	**dedupe(void **arr,
 				return (arr_free(arr2));
 		}
 	}
-	arr2[i2] = 0;
 	arr3 = arr_cut(arr2, i2);
 	free(arr2);
 	return (arr3);
