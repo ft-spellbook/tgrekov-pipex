@@ -10,6 +10,13 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+/**
+ * @file dispatch.c
+ * @dontinclude dispatch.c
+ * @line /\* *********
+ * @until /\* *********
+ */
+
 #include <unistd.h>
 #include <string.h>
 #include <errno.h>
@@ -44,6 +51,17 @@ static int	_dispatch(char **paths, char **argv, char **envp, int *in_out)
 	return (1);
 }
 
+/**
+ * @brief Dispatch child process with argument string @p args, environment
+ * @p envp, and @p stdin / @p stdout @p in_out[0] / @p in_out[1].
+ * 
+ * @param paths Null-terminated array of paths with trailing forward slashes
+ * to search for the executable name in
+ * @param args String of arguments that will be split and passed as @p argv to
+ * the child process
+ * @param envp Environment pointer for the child process
+ * @param in_out @p stdin and @p stdout for the child process
+ */
 void	dispatch(char **paths, char *args, char **envp, int *in_out)
 {
 	char	**child_argv;

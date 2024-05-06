@@ -10,8 +10,24 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+/**
+ * @file ft_lstclear_bonus.c
+ * @dontinclude ft_lstclear_bonus.c
+ * @line /\* *********
+ * @until /\* *********
+ */
+
 #include "libft.h"
 
+/**
+ * @brief Delete every @ref s_list "node" in a list
+ * along with it's @ref s_list::content "content"
+ * 
+ * @param[in, out] lst Pointer to a pointer to the first @ref s_list "node"
+ * in the list
+ * @param[in] del Function used to properly handle the deletion of the
+ * @ref s_list "node"'s @ref s_list::content "content"
+ */
 void	ft_lstclear(t_list	**lst, void (*del)(void *))
 {
 	t_list	*next;

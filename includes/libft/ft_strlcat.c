@@ -10,8 +10,27 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+/**
+ * @file ft_strlcat.c
+ * @dontinclude ft_strlcat.c
+ * @line /\* *********
+ * @until /\* *********
+ */
+
 #include "libft.h"
 
+/**
+ * @brief Appends at most <tt>dstsize - @ref ft_strlen"ft_strlen"(dst) - 1</tt>
+ * characters of string @p src to the end of string @p dst
+ * 
+ * Null-terminates @p dst if <tt>dstsize != 0</tt> and
+ * <tt>@ref ft_strlen"ft_strlen"(dst) < dstsize</tt>
+ * 
+ * @param[in, out] dst Null-terminated string to append to
+ * @param[in] src Null terminated string to append from
+ * @param[in] dstsize Maximum size of the destination after appending
+ * @retval size_t Length of the string the function attempted to create
+ */
 size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 {
 	size_t	src_len;

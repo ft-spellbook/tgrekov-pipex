@@ -10,8 +10,22 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+/**
+ * @file ft_lstnew_bonus.c
+ * @dontinclude ft_lstnew_bonus.c
+ * @line /\* *********
+ * @until /\* *********
+ */
+
 #include "libft.h"
 
+/**
+ * @brief Allocates a new @ref s_list "node", set it's
+ * @ref s_list::content "content", and return it's address
+ * 
+ * @param[in] content Value to set the @ref s_list::content "content" property to
+ * @retval t_list* Pointer to the allocated @ref s_list "node"
+ */
 t_list	*ft_lstnew(void *content)
 {
 	t_list	*node;

@@ -10,9 +10,22 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+/**
+ * @file srcs/bonus/conversion/identify_sequence.c
+ * @dontinclude srcs/bonus/conversion/identify_sequence.c
+ * @line /\* *********
+ * @until /\* *********
+ */
+
 #include "handlers/handlers.h"
 #include "sequence.h"
 
+/**
+ * @brief Sets initial values for a @ref s_sequence that are not always set
+ * elsewhere.
+ * 
+ * @param[in, out] sequence 
+ */
 static void	init_sequence(t_sequence *sequence)
 {
 	sequence->sign = 0;
@@ -20,6 +33,14 @@ static void	init_sequence(t_sequence *sequence)
 	sequence->pad_len = 0;
 }
 
+/**
+ * @brief Initialize a @ref s_sequence and determine which specifier it needs
+ * to handle, and runs the preprocessing function for that specifier.
+ * Sets @ref s_sequence::specifier to @p 0 on failure.
+ * 
+ * @param[in, out] args 
+ * @param[in, out] seq 
+ */
 void	identify_sequence(va_list args, t_sequence *seq)
 {
 	init_sequence(seq);

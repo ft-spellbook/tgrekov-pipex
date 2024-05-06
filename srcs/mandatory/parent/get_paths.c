@@ -10,9 +10,24 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+/**
+ * @file get_paths.c
+ * @dontinclude get_paths.c
+ * @line /\* *********
+ * @until /\* *********
+ */
+
 #include "../../../includes/libft/libft.h"
 #include "../utils/utils.h"
 
+/**
+ * @brief Compare path string @p a against path string @p b, which will always
+ * have a trailing forward slash.
+ * 
+ * @param a Path string
+ * @param b Previously copied path string with trailing forward slash
+ * @retval int @p 0 if identical
+ */
 static int	compare(void *a, void *b)
 {
 	int	len;
@@ -29,6 +44,12 @@ static int	compare(void *a, void *b)
 	return (ft_strncmp((char *) a, (char *) b, len));
 }
 
+/**
+ * @brief Duplicate a path string and append a forward slash.
+ * 
+ * @param str Path string
+ * @retval void* Path string with trailing @p /
+ */
 static void	*copy(void *str)
 {
 	char	*str2;
@@ -41,6 +62,14 @@ static void	*copy(void *str)
 	return (str2);
 }
 
+/**
+ * @brief Create a null-terminated, unique array of paths from the environment
+ * pointer @p envp. Trailing forward slashes included free of charge.
+ * 
+ * @param envp Environment pointer
+ * @retval char** Null-terminated, deduplicated array of paths from @p envp,
+ * with trailing @p /
+ */
 char	**get_paths(char **envp)
 {
 	char	**paths;
