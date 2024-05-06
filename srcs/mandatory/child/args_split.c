@@ -6,7 +6,7 @@
 /*   By: tgrekov <tgrekov@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 15:14:26 by tgrekov           #+#    #+#             */
-/*   Updated: 2024/05/06 13:51:43 by tgrekov          ###   ########.fr       */
+/*   Updated: 2024/05/06 15:23:08 by tgrekov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ static size_t	count_sections(char const *s)
 	{
 		if (!_ifs(s[i]))
 		{
-			if (s[i] == '"' || s[i] == '\'')
+			if (s[i] == '"')
 			{
 				if (quoted)
 					sections++;
@@ -60,7 +60,7 @@ static size_t	end_of_word(char const *s, int *was_quoted)
 	i = 0;
 	while (s[i])
 	{
-		if (s[i] == '"' || s[i] == '\'')
+		if (s[i] == '"')
 		{
 			*was_quoted = 1;
 			quoted = !quoted;
