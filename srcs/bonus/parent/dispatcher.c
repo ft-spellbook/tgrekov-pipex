@@ -6,7 +6,7 @@
 /*   By: tgrekov <tgrekov@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/23 08:18:15 by tgrekov           #+#    #+#             */
-/*   Updated: 2024/05/02 10:43:12 by tgrekov          ###   ########.fr       */
+/*   Updated: 2024/05/06 08:13:30 by tgrekov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,28 +26,38 @@ void	dispatch(char **paths, char *args, char **envp, int *in_out);
 char	**args_split(char const *s);
 int		wait_all(int *pids, int n, int override);
 
-static int	piping(int i, int n, int *pair, int **in_out__last)
+static int	piping(int i, int n, int *pair, int **in_out__last_out)
 {
 	if (!i)
-		*in_out__last[1] = in_out__last[0][0];
+		*in_out__last_out[1] = in_out__last_out[0][0];
 	else
-	{
-		if (close(*in_out__last[1]) == -1)
-			return ((int) err("close()", (void *) 1));
-		if (close(pair[1]) == -1)
-			return ((int) err("close()", (void *) 1));
-		*in_out__last[1] = pair[0];
-	}
+		*in_out__last_out[1] = pair[0];
 	if (i == (n - 1))
-		pair[1] = in_out__last[0][1];
+		pair[1] = in_out__last_out[0][1];
 	else if (pipe(pair) == -1)
 		return ((int) err("pipe()", (void *) 1));
 	return (0);
 }
 
-static void	_dispatch(int i, char ***str_arrs, int *in_out)
+static int	_fork(int *i_n, int **pids_pair, int last_out, char ***str_arrs)
 {
-	dispatch(str_arrs[0], str_arrs[1][i], str_arrs[2], in_out);
+	int	pid;
+
+	pid = fork();
+	if (pid == -1)
+		return ((int) err("fork()", 0));
+	if (!pid)
+	{
+		free(pids_pair[0]);
+		if (i_n[0] != (i_n[1] - 1) && close(pids_pair[1][0]) == -1)
+		{
+			free(str_arrs[0]);
+			exit((int) err("close()", (void *) 1));
+		}
+		dispatch(str_arrs[0], str_arrs[1][i_n[0]], str_arrs[2],
+			(int []){last_out, pids_pair[1][1]});
+	}
+	return (pid);
 }
 
 /**
@@ -78,16 +88,15 @@ int	dispatcher(int n, char ***str_arrs, int *in_out)
 	{
 		if (piping(i, n, pair, (int *[]){in_out, &last_out}))
 			break ;
-		pids[i] = fork();
-		if (pids[i] == -1 && !err("fork()", 0))
+		pids[i] = _fork((int []){i, n}, (int *[]){pids, pair},
+				last_out, str_arrs);
+		if (close(last_out) == -1)
+			return ((int) err("close()", (void *) 1));
+		if (close(pair[1]) == -1)
+			return ((int) err("close()", (void *) 1));
+		if (!pids[i])
 			break ;
-		if (!pids[i++])
-		{
-			free(pids);
-			if (i != n && close(pair[0]) == -1)
-				exit((int) err("close()", (void *) 1));
-			_dispatch(i - 1, str_arrs, (int []){last_out, pair[1]});
-		}
+		i++;
 	}
 	return (wait_all(pids, i, !last_out));
 }
