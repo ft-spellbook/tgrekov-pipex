@@ -6,7 +6,7 @@
 /*   By: tgrekov <tgrekov@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 13:47:02 by tgrekov           #+#    #+#             */
-/*   Updated: 2024/05/06 13:59:26 by tgrekov          ###   ########.fr       */
+/*   Updated: 2024/05/06 14:05:14 by tgrekov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,8 @@ char	*get_cmd(char **paths, char *name)
 	if (!access(cmd, F_OK))
 		return (cmd);
 	free(cmd);
+	if (!paths)
+		return (0);
 	while (*paths)
 	{
 		cmd = ft_strjoin(*paths, name);

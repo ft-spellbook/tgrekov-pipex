@@ -6,7 +6,7 @@
 /*   By: tgrekov <tgrekov@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 13:59:01 by tgrekov           #+#    #+#             */
-/*   Updated: 2024/05/06 08:23:42 by tgrekov          ###   ########.fr       */
+/*   Updated: 2024/05/06 14:04:44 by tgrekov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,11 +46,6 @@ int	main(int argc, char **argv, char **envp)
 			S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH);
 	in_out[0] = _open(argv[1], O_RDONLY, 0);
 	paths = get_paths(envp);
-	if (!paths)
-	{
-		ft_printf("%>Failed to resolve path\n", 2);
-		return (1);
-	}
 	status = dispatcher(paths, argv + 2, envp, in_out);
 	arr_free((void **) paths);
 	return (status);

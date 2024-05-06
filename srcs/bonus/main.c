@@ -6,7 +6,7 @@
 /*   By: tgrekov <tgrekov@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 13:59:01 by tgrekov           #+#    #+#             */
-/*   Updated: 2024/05/06 08:24:08 by tgrekov          ###   ########.fr       */
+/*   Updated: 2024/05/06 14:05:30 by tgrekov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,11 +82,6 @@ int	main(int argc, char **argv, char **envp)
 	else if (!here_doc(argv[2], in_out))
 		return (1);
 	paths = get_paths(envp);
-	if (!paths)
-	{
-		ft_printf("%>Failed to resolve path\n", 2);
-		return (1);
-	}
 	status = dispatcher(argc - 3 - is_here_doc,
 			(char **[]){paths, argv + 2 + is_here_doc, envp}, in_out);
 	arr_free((void **) paths);
