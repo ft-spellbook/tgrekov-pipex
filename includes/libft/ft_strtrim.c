@@ -10,8 +10,24 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+/**
+ * @file ft_strtrim.c
+ * @dontinclude ft_strtrim.c
+ * @line /\* *********
+ * @until /\* *********
+ */
+
 #include "libft.h"
 
+/**
+ * @brief Allocates and returns a copy of @p s1 with any
+ * successive characters found in string @p set removed
+ * from the start and end
+ * 
+ * @param[in] s1 Null-terminated string to trim
+ * @param[in] set Null-terminated string containing characters to trim off @p s1
+ * @retval char* Pointer to allocated trimmed string
+ */
 char	*ft_strtrim(char const *s1, char const *set)
 {
 	size_t	start;

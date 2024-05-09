@@ -10,6 +10,13 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+/**
+ * @file srcs/bonus/main.c
+ * @dontinclude srcs/bonus/main.c
+ * @line /\* *********
+ * @until /\* *********
+ */
+
 #include <fcntl.h>
 #include <string.h>
 #include <errno.h>
@@ -22,6 +29,15 @@ int		here_doc(char *limiter, int *in_out);
 char	**get_paths(char **envp);
 int		dispatcher(int n, char ***str_arrs, int *in_out);
 
+/**
+ * @brief Check if in here_doc mode, verify arguments count accordingly, and
+ * set append or truncate accordingly.
+ * 
+ * @param argc 
+ * @param argv 
+ * @param is_here_doc 
+ * @param trunc_append 
+ */
 static void	_input(int argc, char **argv, int *is_here_doc, int *trunc_append)
 {
 	*is_here_doc = 0;

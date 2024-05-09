@@ -10,8 +10,27 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+/**
+ * @file ft_lstadd_front_bonus.c
+ * @dontinclude ft_lstadd_front_bonus.c
+ * @line /\* *********
+ * @until /\* *********
+ */
+
 #include "libft.h"
 
+/**
+ * @brief Insert @ref s_list "node" @p new into the start of the list pointed
+ * to by the pointer at @p lst.
+ * 
+ * If @p lst or @p new are @p NULL, does nothing.  
+ * Sets @ref s_list::next "next" property of @ref s_list "node" at pointer
+ * @p new to address at pointer @p lst and sets pointer at @p lst to @p new
+ * 
+ * @param[in,out] lst Pointer to pointer to first @ref s_list "node"
+ * in the list.
+ * @param[in] new Pointer to the new @ref s_list "node" to add
+ */
 void	ft_lstadd_front(t_list **lst, t_list *new)
 {
 	if (!lst || !new)
