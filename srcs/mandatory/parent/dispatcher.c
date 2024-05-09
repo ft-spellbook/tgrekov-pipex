@@ -6,7 +6,7 @@
 /*   By: tgrekov <tgrekov@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/23 08:18:15 by tgrekov           #+#    #+#             */
-/*   Updated: 2024/05/06 15:15:54 by tgrekov          ###   ########.fr       */
+/*   Updated: 2024/05/09 19:27:42 by tgrekov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ int	dispatcher(char **paths, char **argv, char **envp, int *in_out)
 	pids[0] = child1((char **[]){paths, argv, envp}, pair, in_out);
 	if (!pids[0])
 		return (1);
-	if (close(in_out[0]) == -1)
+	if (in_out[0] != -1 && close(in_out[0]) == -1)
 		return (wait_all(pids, 1, (int) err("close()", (void *) 1)));
 	if (close(pair[1]) == -1)
 		return (wait_all(pids, 1, (int) err("close()", (void *) 1)));
@@ -65,7 +65,7 @@ int	dispatcher(char **paths, char **argv, char **envp, int *in_out)
 		return (wait_all(pids, 1, 1));
 	if (close(pair[0]) == -1)
 		return (wait_all(pids, 2, (int) err("close()", (void *) 1)));
-	if (close(in_out[1]) == -1)
+	if (in_out[1] != -1 && close(in_out[1]) == -1)
 		return (wait_all(pids, 2, (int) err("close()", (void *) 1)));
 	return (wait_all(pids, 2, 0));
 }

@@ -6,7 +6,7 @@
 /*   By: tgrekov <tgrekov@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/23 08:18:15 by tgrekov           #+#    #+#             */
-/*   Updated: 2024/05/06 15:06:18 by tgrekov          ###   ########.fr       */
+/*   Updated: 2024/05/09 19:32:13 by tgrekov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,8 @@ static int	_fork(int *i_n, int **pids_pair, int last_out, char ***str_arrs)
 	if (!pid)
 	{
 		free(pids_pair[0]);
-		if (i_n[0] != (i_n[1] - 1) && close(pids_pair[1][0]) == -1)
+		if (i_n[0] != (i_n[1] - 1) && pids_pair[1][0] != -1
+			&& close(pids_pair[1][0]) == -1)
 		{
 			free(str_arrs[0]);
 			exit((int) err("close()", (void *) 1));
@@ -89,7 +90,7 @@ int	dispatcher(int n, char ***str_arrs, int *in_out)
 			break ;
 		pids[i] = _fork((int []){i, n}, (int *[]){pids, pair},
 				last_out, str_arrs);
-		if (close(last_out) == -1)
+		if (last_out != -1 && close(last_out) == -1)
 			return ((int) err("close()", (void *) 1));
 		if (close(pair[1]) == -1)
 			return ((int) err("close()", (void *) 1));
