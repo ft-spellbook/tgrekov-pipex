@@ -24,7 +24,6 @@ SRC_NAMES =	main.c				\
 			parent/dispatcher.c	\
 			parent/get_paths.c	\
 			parent/wait_all.c	\
-			child/args_split.c	\
 			child/dispatch.c	\
 			child/get_cmd.c
 
