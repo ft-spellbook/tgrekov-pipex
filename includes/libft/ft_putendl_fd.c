@@ -10,22 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-/**
- * @file ft_putendl_fd.c
- * @dontinclude ft_putendl_fd.c
- * @line /\* *********
- * @until /\* *********
- */
-
 #include "libft.h"
 
-/**
- * @brief Write string at pointer @p s followed
- * by a newline to file descriptor @p fd
- * 
- * @param[in] s Pointer to string to write
- * @param[in] fd File descriptor to write to
- */
 void	ft_putendl_fd(char *s, int fd)
 {
 	ft_putstr_fd(s, fd);

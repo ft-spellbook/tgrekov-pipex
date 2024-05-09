@@ -10,13 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-/**
- * @file srcs/bonus/utils/repeat_str_n.c
- * @dontinclude srcs/bonus/utils/repeat_str_n.c
- * @line /\* *********
- * @until /\* *********
- */
-
 #include "../../../../libft.h"
 
 static int	_repeat_str_n(const char *str, int n, int strlen, int fd)
@@ -38,15 +31,6 @@ static int	_repeat_str_n(const char *str, int n, int strlen, int fd)
 	return (res + res2);
 }
 
-/**
- * @brief Write exactly @p n characters from @p str on descriptor @p fd.
- * Repeats string if @p ft_strlen(str) is greater than @p n.
- * 
- * @param[in] str
- * @param[in] n
- * @param[in] fd
- * @retval int Number of characters written, or @p -1 on error.
- */
 int	repeat_str_n(const char *str, int n, int fd)
 {
 	if (n < 1)

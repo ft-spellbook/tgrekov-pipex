@@ -10,13 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-/**
- * @file srcs/bonus/utils/u_put_base.c
- * @dontinclude srcs/bonus/utils/u_put_base.c
- * @line /\* *********
- * @until /\* *********
- */
-
 #include <unistd.h>
 #include "internal_types.h"
 #include "../../../../libft.h"
@@ -38,14 +31,6 @@ static int	_u_put_base(t_ubiggest n,
 	return (res + 1);
 }
 
-/**
- * @brief Write unsigned number @p n on descriptor @p fd in base @p base.
- * 
- * @param[in] n 
- * @param[in] base 
- * @param[in] fd 
- * @retval int Number of characters written, or @p -1 on error.
- */
 int	u_put_base(t_ubiggest n, char *base, int fd)
 {
 	return (_u_put_base(n, base, ft_strlen(base), fd));
