@@ -10,13 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-/**
- * @file ft_printf.h
- * @dontinclude ft_printf.h
- * @line /\* *********
- * @until /\* *********
- */
-
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
 

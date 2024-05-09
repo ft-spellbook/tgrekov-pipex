@@ -10,13 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-/**
- * @file srcs/bonus/parent/dispatcher.c
- * @dontinclude srcs/bonus/parent/dispatcher.c
- * @line /\* *********
- * @until /\* *********
- */
-
 #include <stdlib.h>
 #include <unistd.h>
 #include "../../mandatory/utils/utils.h"
@@ -59,19 +52,6 @@ static int	_fork(int *i_n, int **pids_pair, int last_out, char ***str_arrs)
 	return (pid);
 }
 
-/**
- * @brief Dispatch @p n child processes with argument strings
- * @p str_arrs[1][i], environment pointer @p str_arrs[2], where @p stdin
- * for the first process is @p in_out[0] and @p stdout for the last process
- * is @p in_out[1].
- * 
- * @param n Number of processes
- * @param str_arrs Null-terminated arrays @p paths, @p argv, and @p envp
- * @param in_out @p stdin for the first process
- * and @p stdout for the last process
- * @retval int Exit code of the last process, if available, else @p 1, or if
- * an error was encountered in the parent process, @p 1.
- */
 int	dispatcher(int n, char ***str_arrs, int *in_out)
 {
 	int	i;

@@ -10,13 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-/**
- * @file args_split.c
- * @dontinclude args_split.c
- * @line /\* *********
- * @until /\* *********
- */
-
 #include "../../../includes/libft/libft.h"
 #include "../utils/utils.h"
 
@@ -72,17 +65,6 @@ static size_t	end_of_word(char const *s, int *was_quoted)
 	return (ft_strlen(s));
 }
 
-/**
- * @brief Argument splitter with extremely rudimentary support for
- * double-quoting segments.
- * 
- * Basically @ref ft_split if it respected quotes when the quoted segment
- * is considered it's own word. (Ends of the segment are preceeded / followed
- * by spaces / start or end of string)
- * 
- * @param s String to split arguments from
- * @retval char** Null-terminated array of arguments
- */
 char	**args_split(char const *s)
 {
 	char	**arr;

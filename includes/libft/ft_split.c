@@ -10,13 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-/**
- * @file ft_split.c
- * @dontinclude ft_split.c
- * @line /\* *********
- * @until /\* *********
- */
-
 #include "libft.h"
 
 static size_t	count_sections(char const *s, char c)
@@ -60,15 +53,6 @@ static size_t	end_of_word(char const *s, char c)
 	return (ft_strlen(s));
 }
 
-/**
- * @brief Split string @p s by characer @p c into allocated array of
- * strings, with @p NULL as the last element
- * 
- * @param[in] s Null-terminated string to split
- * @param[in] c Character to split on
- * @retval char** Allocated array of allocated string pointers,
- * with @p NULL as the last element
- */
 char	**ft_split(char const *s, char c)
 {
 	char	**arr;

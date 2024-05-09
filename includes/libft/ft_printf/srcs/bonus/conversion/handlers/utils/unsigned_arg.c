@@ -10,28 +10,11 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-/**
- * @file srcs/bonus/conversion/handlers/utils/unsigned_arg.c
- * @dontinclude srcs/bonus/conversion/handlers/utils/unsigned_arg.c
- * @line /\* *********
- * @until /\* *********
- */
-
 #include <stdarg.h>
 #include <stdlib.h>
 #include "../../subspec.h"
 #include "../../../utils/internal_types.h"
 
-/**
- * @brief Retrieves the next unsigned variable argument in the appropriate
- * size dependent on the @ref e_lenmod"length modifier".
- * 
- * For more info on the length modifiers, see @ref ft_printf.c
- * 
- * @param[in, out] args 
- * @param[in] lenmod 
- * @retval t_ubiggest Retrieved value
- */
 t_ubiggest	unsigned_arg(va_list args, t_lenmod lenmod)
 {
 	if (lenmod == hh)
