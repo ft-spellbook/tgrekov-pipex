@@ -10,8 +10,22 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+/**
+ * @file err.c
+ * @dontinclude err.c
+ * @line /\* *********
+ * @until /\* *********
+ */
+
 #include <stdio.h>
 
+/**
+ * @brief Wrapper around <tt>perror()</tt> that always returns @p retval.
+ * 
+ * @param str String to pass to <tt>perror()</tt>
+ * @param retval Return value
+ * @retval void* @p retval
+ */
 void	*err(const char *str, void *retval)
 {
 	perror(str);

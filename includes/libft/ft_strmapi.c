@@ -10,8 +10,27 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+/**
+ * @file ft_strmapi.c
+ * @dontinclude ft_strmapi.c
+ * @line /\* *********
+ * @until /\* *********
+ */
+
 #include "libft.h"
 
+/**
+ * @brief Allocates and creates a new string from the output of function
+ * @p f processing each character of string @p s
+ * 
+ * This function iterates from end to start
+ * 
+ * @param[in] s Null-terminated string to iterate over
+ * @param[in] f Pointer to a function that returns each character of the new
+ * string individually, provided the index and value of each original character
+ * @retval char* Null-terminated string populated from successive
+ * applications of @p f. Result of malloc.
+ */
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
 	unsigned int	len;

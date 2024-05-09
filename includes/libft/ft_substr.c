@@ -10,8 +10,25 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+/**
+ * @file ft_substr.c
+ * @dontinclude ft_substr.c
+ * @line /\* *********
+ * @until /\* *********
+ */
+
 #include "libft.h"
 
+/**
+ * @brief Allocates and returns a substring of @p s,
+ * starting at @p s + @p start, and ending no later than
+ * @p s + @p start + @p len
+ * 
+ * @param[in] s Null-terminated string to make a substring of
+ * @param[in] start Position from @p s at which to start
+ * @param[in] len Maximum length of the substring to make
+ * @retval char* Pointer to allocated null-terminated substring
+ */
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
 	size_t	s2_len;

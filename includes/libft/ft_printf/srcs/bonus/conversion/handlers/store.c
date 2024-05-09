@@ -10,12 +10,29 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+/**
+ * @file srcs/bonus/conversion/handlers/store.c
+ * @dontinclude srcs/bonus/conversion/handlers/store.c
+ * @line /\* *********
+ * @until /\* *********
+ */
+
 #include <stdarg.h>
 #include <unistd.h>
 #include <stdlib.h>
 #include "../sequence.h"
 #include "../../utils/internal_types.h"
 
+/**
+ * @brief Processes the store specifier by setting the value at the retrieved
+ * address to the number of characters written so far in the appropriate size
+ * dependent on the @ref e_lenmod"length modifier".
+ * 
+ * @param[in] seq 
+ * @param[in] fd (Unused)
+ * @param[in] total
+ * @retval int @p -1 if the retrieved address is null, otherwise @p 0
+ */
 static int	process_store(t_sequence seq, int *fd, int total)
 {
 	(void) fd;
@@ -40,6 +57,15 @@ static int	process_store(t_sequence seq, int *fd, int total)
 	return (0);
 }
 
+/**
+ * @brief Preprocess the store specifier by retrieving the address argument in
+ * the appropriate size dependent on the @ref e_lenmod"length modifier",
+ * ensuring that @ref s_subspec::min_width is @p 0, and setting
+ * @ref s_sequence::process to @ref process_store.
+ * 
+ * @param args 
+ * @param seq 
+ */
 void	pre_store(va_list args, t_sequence *seq)
 {
 	if (seq->subspec.lenmod == hh)

@@ -10,8 +10,24 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+/**
+ * @file ft_striteri.c
+ * @dontinclude ft_striteri.c
+ * @line /\* *********
+ * @until /\* *********
+ */
+
 #include "libft.h"
 
+/**
+ * @brief Applies function @p f to each character of string @p s
+ * 
+ * This function iterates from end to start
+ * 
+ * @param[in, out] s Null-terminated string to iterate over
+ * @param[in] f Pointer to a function where the first and second arguments are
+ * the index of the current character and a pointer to the current character
+ */
 void	ft_striteri(char *s, void (*f)(unsigned int, char *))
 {
 	unsigned int	len;
