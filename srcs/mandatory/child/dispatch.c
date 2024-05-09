@@ -6,7 +6,7 @@
 /*   By: tgrekov <tgrekov@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 13:32:09 by tgrekov           #+#    #+#             */
-/*   Updated: 2024/05/06 14:26:14 by tgrekov          ###   ########.fr       */
+/*   Updated: 2024/05/09 19:50:59 by tgrekov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 #include <string.h>
 #include <errno.h>
 #include <stdlib.h>
+#include "../../../includes/libft/libft.h"
 #include "../../../includes/libft/ft_printf/ft_printf.h"
 #include "../utils/utils.h"
 
@@ -71,7 +72,7 @@ void	dispatch(char **paths, char *args, char **envp, int *in_out)
 	if (in_out[0] == -1 || in_out[1] == -1)
 		exit(1);
 	code = 1;
-	child_argv = args_split(args);
+	child_argv = ft_split(args, ' ');
 	if (child_argv)
 	{
 		code = _dispatch(paths, child_argv, envp, in_out);
