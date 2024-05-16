@@ -6,7 +6,7 @@
 /*   By: tgrekov <tgrekov@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 13:59:01 by tgrekov           #+#    #+#             */
-/*   Updated: 2024/05/06 14:27:51 by tgrekov          ###   ########.fr       */
+/*   Updated: 2024/05/16 10:44:56 by tgrekov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int	main(int argc, char **argv, char **envp)
 
 	if (argc != 5)
 	{
-		ft_printf("%>Wrong number of arguments: %d. Expected 5\n", 2, argc);
+		ft_printf("%>Wrong number of arguments: %d. Expected 4\n", 2, argc - 1);
 		return (1);
 	}
 	in_out[1] = _open(argv[argc - 1], O_WRONLY | O_CREAT | O_TRUNC,

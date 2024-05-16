@@ -6,7 +6,7 @@
 /*   By: tgrekov <tgrekov@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 13:59:01 by tgrekov           #+#    #+#             */
-/*   Updated: 2024/05/06 14:28:06 by tgrekov          ###   ########.fr       */
+/*   Updated: 2024/05/16 11:07:43 by tgrekov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ static void	_input(int argc, char **argv, int *is_here_doc, int *trunc_append)
 	if (argc < (5 + *is_here_doc))
 	{
 		ft_printf("%>Too few arguments: %d. Expected %d+\n",
-			2, argc, 5 + *is_here_doc);
+			2, argc - 1, 4 + *is_here_doc);
 		exit(1);
 	}
 }
