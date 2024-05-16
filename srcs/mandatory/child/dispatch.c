@@ -6,7 +6,7 @@
 /*   By: tgrekov <tgrekov@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 13:32:09 by tgrekov           #+#    #+#             */
-/*   Updated: 2024/05/09 19:50:59 by tgrekov          ###   ########.fr       */
+/*   Updated: 2024/05/16 10:45:36 by tgrekov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,10 @@ void	dispatch(char **paths, char *args, char **envp, int *in_out)
 	int		code;
 
 	if (in_out[0] == -1 || in_out[1] == -1)
+	{
+		arr_free(paths);
 		exit(1);
+	}
 	code = 1;
 	child_argv = ft_split(args, ' ');
 	if (child_argv)
