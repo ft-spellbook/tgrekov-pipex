@@ -10,24 +10,11 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-/**
- * @file srcs/bonus/conversion/parse_subspec.c
- * @dontinclude srcs/bonus/conversion/parse_subspec.c
- * @line /\* *********
- * @until /\* *********
- */
-
 #include <stdarg.h>
 #include "subspec.h"
 #include "../utils/utils.h"
 #include "../../../../libft.h"
 
-/**
- * @brief Sets initial values for a @ref s_subspec that are not always set
- * elsewhere.
- * 
- * @param[in, out] subspec 
- */
 void	init_subspec(t_subspec *subspec)
 {
 	subspec->left_justify = 0;
@@ -39,12 +26,6 @@ void	init_subspec(t_subspec *subspec)
 	subspec->lenmod = none;
 }
 
-/**
- * @brief Parse the @ref e_lenmod"length modifier" for the sequence.
- * 
- * @param[in, out] format 
- * @param[in, out] subspec 
- */
 static void	parse_lenmod(const char **format, t_subspec *subspec)
 {
 	if (**format == 'h' && (*format)++)
@@ -67,13 +48,6 @@ static void	parse_lenmod(const char **format, t_subspec *subspec)
 		subspec->lenmod = t;
 }
 
-/**
- * @brief Parse inline or variable argument width or precision.
- * 
- * @param[in, out] format 
- * @param[in, out] args 
- * @retval int Parsed value for width or precision.
- */
 static int	subspec_parse_width_or_precision(const char **format, va_list args)
 {
 	int	res;
@@ -89,13 +63,6 @@ static int	subspec_parse_width_or_precision(const char **format, va_list args)
 	return (res);
 }
 
-/**
- * @brief Parse @ref s_subspec"flags, width, precision, and length".
- * 
- * @param[in, out] format 
- * @param[in, out] subspec 
- * @param[in, out] args 
- */
 void	parse_subspec(const char **format, t_subspec *subspec, va_list args)
 {
 	while (**format && ft_strchr("-+ #0_", **format))

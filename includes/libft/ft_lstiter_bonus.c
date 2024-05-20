@@ -10,23 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-/**
- * @file ft_lstiter_bonus.c
- * @dontinclude ft_lstiter_bonus.c
- * @line /\* *********
- * @until /\* *********
- */
-
 #include "libft.h"
 
-/**
- * @brief Iterates over a list and applies
- * the function @p f over each @ref s_list "node"
- * 
- * @param[in] lst Pointer to the first @ref s_list "node" in the list
- * @param[in] f Function which accepts the
- * @ref s_list::content "content" of a @ref s_list "node"
- */
 void	ft_lstiter(t_list *lst, void (*f)(void *))
 {
 	if (!f)

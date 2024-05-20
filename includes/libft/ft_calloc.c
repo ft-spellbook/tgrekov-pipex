@@ -10,27 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-/**
- * @file ft_calloc.c
- * @dontinclude ft_calloc.c
- * @line /\* *********
- * @until /\* *********
- */
-
 #include "libft.h"
 
-/**
- * @brief Allocates @p count * @p size bytes with malloc
- * and returns a pointer to the result.
- * 
- * @param[in] count Number of objects to allocate for
- * @param[in] size Size of each object
- * @retval void* Freeable pointer to allocated memory after it is
- * @ref ft_bzero "filled with zeroes"  
- * If either @p count or @p size are \p 0, returns
- * <tt>@ref ft_calloc"ft_calloc"(1, 1)</tt>.  
- * If the multiplication of @p count and @p size overflows, returns \p NULL.
- */
 void	*ft_calloc(size_t count, size_t size)
 {
 	void	*ptr;

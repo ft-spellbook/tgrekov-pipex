@@ -10,23 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-/**
- * @file arr_has.c
- * @dontinclude arr_has.c
- * @line /\* *********
- * @until /\* *********
- */
-
-/**
- * @brief Check null-terminated array @p arr for entry @p content
- * using comparison function @p compare.
- * 
- * @param arr Array to check
- * @param content Content to @p compare against
- * @param compare Function that compares two <tt>void *</tt>, returning @p 0 if
- * they match
- * @retval int @p 1 if the content was found, otherwise @p 0
- */
 int	arr_has(void **arr, void *content,
 			int (*compare)(void *, void *))
 {
