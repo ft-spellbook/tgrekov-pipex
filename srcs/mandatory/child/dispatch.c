@@ -6,7 +6,7 @@
 /*   By: tgrekov <tgrekov@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 13:32:09 by tgrekov           #+#    #+#             */
-/*   Updated: 2024/05/16 10:45:36 by tgrekov          ###   ########.fr       */
+/*   Updated: 2024/05/20 12:16:47 by tgrekov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ void	dispatch(char **paths, char *args, char **envp, int *in_out)
 
 	if (in_out[0] == -1 || in_out[1] == -1)
 	{
-		arr_free(paths);
+		arr_free((void **) paths);
 		exit(1);
 	}
 	code = 1;
