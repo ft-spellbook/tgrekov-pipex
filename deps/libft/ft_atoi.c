@@ -10,13 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-/**
- * @file ft_atoi.c
- * @dontinclude ft_atoi.c
- * @line /\* *********
- * @until /\* *********
- */
-
 #include "libft.h"
 
 static int	ft_isspace(char c)
@@ -25,20 +18,6 @@ static int	ft_isspace(char c)
 		|| c == '\v' || c == '\f' || c == '\r');
 }
 
-/**
- * @brief Converts ASCII string @p str to integer representation
- * 
- * Converts the initial numerical portion of the
- * string at pointer @p str to int representation.
- * 
- * Numerical portion may be preceded by a singular
- * optional + or - sign.
- * 
- * @param[in] str Null-terminated string containing integer
- * @retval int Result of conversion, unless the value (handled as a long during
- * conversion), would overflow or underflow, in which case it returns
- * @ref FT_LONG_MAX or <tt>@ref FT_LONG_MAX - 1</tt>, respectively.
- */
 int	ft_atoi(const char *str)
 {
 	long	nbr;

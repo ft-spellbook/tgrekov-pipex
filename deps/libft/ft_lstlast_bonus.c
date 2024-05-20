@@ -10,21 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-/**
- * @file ft_lstlast_bonus.c
- * @dontinclude ft_lstlast_bonus.c
- * @line /\* *********
- * @until /\* *********
- */
-
 #include "libft.h"
 
-/**
- * @brief Get the last @ref s_list "node" in a list
- * 
- * @param[in] lst Pointer to the first @ref s_list "node" in the list
- * @retval t_list* Pointer to the last @ref s_list "node" in the list
- */
 t_list	*ft_lstlast(t_list *lst)
 {
 	if (!lst)
