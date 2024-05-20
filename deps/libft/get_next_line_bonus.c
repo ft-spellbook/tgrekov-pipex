@@ -10,9 +10,26 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+/**
+ * @file get_next_line_bonus.c
+ * @dontinclude get_next_line_bonus.c
+ * @line /\* *********
+ * @until /\* *********
+ */
+
 #include "libft.h"
 #include "get_next_line_bonus.h"
 
+/**
+ * @brief Allocate and return a new string of size <tt>len + 1</tt> containing
+ * @p len characters from string pointed to by @p s1, allocate a new string
+ * containing the remainder of the string pointed to by @p s1, free the
+ * original, and set address at @p s1 to point to the remainder string.
+ * 
+ * @param s1 Pointer to address of string to consume from
+ * @param len Number of characters to consume
+ * @retval char* Allocated consumed section of @p *s1
+ */
 static char	*consume_and_resize(char **s1, size_t len)
 {
 	size_t	new_s1_len;
@@ -41,6 +58,15 @@ static char	*consume_and_resize(char **s1, size_t len)
 	return (s2);
 }
 
+/**
+ * @brief Find the first newline in string @p s and
+ * write its index + 1 into @p len
+ * 
+ * @param[in] s Null-terminated string to search
+ * @param[out] len Pointer to size_t integer into which the position index of
+ * the newline + 1 is written
+ * @retval size_t @p len
+ */
 static size_t	find_line_end(char *s, size_t *len)
 {
 	*len = 0;
@@ -54,6 +80,18 @@ static size_t	find_line_end(char *s, size_t *len)
 	return (*len = 0);
 }
 
+/**
+ * @brief Reading from @p fd, fill and / or allocate line buffer at
+ * @p line_buf, set @p first_line_len to the length of the first
+ * segment ending with a newline or EOF
+ * 
+ * @param[in] fd Integer file descriptor to read from
+ * @param[in, out] line_buf Pointer to address of allocated memory to fill.
+ * Address at @p *line_buf may be NULL
+ * @param[in, out] first_line_len Pointer to size_t integer into which the
+ * length of the first line is written
+ * @retval size_t @p first_line_len
+ */
 static size_t	fill_line_buf(int fd, char **line_buf, size_t *first_line_len)
 {
 	char	read_buf[BUFFER_SIZE + 1];
@@ -83,6 +121,14 @@ static size_t	fill_line_buf(int fd, char **line_buf, size_t *first_line_len)
 	return (*first_line_len);
 }
 
+/**
+ * @brief Return the next segment of text ending in a
+ * newline or EOF from file descriptor @p fd
+ * 
+ * @param[in] fd Integer file descriptor to read from
+ * @retval char* Freeable, null-terminated string on success, or @p NULL
+ * if error or nothing to read
+ */
 char	*get_next_line(int fd)
 {
 	static char		*line_buf[MAX_FD + 1] = {0};

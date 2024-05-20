@@ -10,10 +10,28 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+/**
+ * @file dedupe.c
+ * @dontinclude dedupe.c
+ * @line /\* *********
+ * @until /\* *********
+ */
+
 #include <stdlib.h>
 #include <libft.h>
 #include "utils.h"
 
+/**
+ * @brief Create new null-terminated array containing only unique values from
+ * @p arr, checked with @p compare, and copied with @p copy.
+ * 
+ * @param arr Array to deduplicate
+ * @param compare Function that compares two <tt>void *</tt>, returning @p 0 if
+ * they match
+ * @param copy Function that creates and returns
+ * a duplicate of it's <tt>void *</tt> argument
+ * @retval void** New, deduplicated null-terminated array
+ */
 void	**dedupe(void **arr,
 				int (*compare)(void *, void *),
 				void *(*copy)(void *))

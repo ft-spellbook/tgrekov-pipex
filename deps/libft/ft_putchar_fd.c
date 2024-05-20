@@ -10,8 +10,21 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+/**
+ * @file ft_putchar_fd.c
+ * @dontinclude ft_putchar_fd.c
+ * @line /\* *********
+ * @until /\* *********
+ */
+
 #include "libft.h"
 
+/**
+ * @brief Write character @p c to file descriptor @p fd
+ * 
+ * @param[in] c Character to write
+ * @param[in] fd File descriptor to write to
+ */
 void	ft_putchar_fd(char c, int fd)
 {
 	write(fd, &c, 1);

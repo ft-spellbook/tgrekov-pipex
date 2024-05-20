@@ -10,11 +10,26 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+/**
+ * @file get_cmd.c
+ * @dontinclude get_cmd.c
+ * @line /\* *********
+ * @until /\* *********
+ */
+
 #include <unistd.h>
 #include <stdlib.h>
 #include "../utils/utils.h"
 #include <libft.h>
 
+/**
+ * @brief Find and return the first existing file with called @p name from the
+ * array of @p paths.
+ * 
+ * @param paths Null-terminated array of paths with trailing forward slashes
+ * @param name Name of command to search for
+ * @retval char* Full path to the command
+ */
 char	*get_cmd(char **paths, char *name)
 {
 	char	*cmd;
