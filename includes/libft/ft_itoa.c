@@ -10,6 +10,13 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+/**
+ * @file ft_itoa.c
+ * @dontinclude ft_itoa.c
+ * @line /\* *********
+ * @until /\* *********
+ */
+
 #include "libft.h"
 
 static int	int_length(int n)
@@ -32,6 +39,14 @@ static char	*edge_case(int n)
 	return (ft_strdup("-2147483648"));
 }
 
+/**
+ * @brief Converts integer @p n to an allocated ASCII string
+ * 
+ * @param[in] n Integer to convert
+ * @retval char* Null-terminated string containing an ASCII
+ * representation of @p n, preceded by '-' if @p n is negative.  
+ * If allocation fails, returns @p NULL.
+ */
 char	*ft_itoa(int n)
 {
 	int		len;
