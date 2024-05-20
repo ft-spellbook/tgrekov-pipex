@@ -10,22 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-/**
- * @file srcs/mandatory/wrap_err.c
- * @dontinclude srcs/mandatory/wrap_err.c
- * @line /\* *********
- * @until /\* *********
- */
-
-/**
- * @brief Wrapper for handling functions that return a positive integer on
- * success and @p -1 on failure. Either adds positive integer @p n to the
- * value at @p total, or sets it to @p -1.
- * 
- * @param[in] n 
- * @param[in, out] total 
- * @retval int If @p n is positive, returns @p 1. Return @p 0 if it is @p -1.
- */
 int	wrap_err(int n, int *total)
 {
 	if (n == -1)

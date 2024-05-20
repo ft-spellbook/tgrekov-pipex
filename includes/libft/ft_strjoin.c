@@ -10,23 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-/**
- * @file ft_strjoin.c
- * @dontinclude ft_strjoin.c
- * @line /\* *********
- * @until /\* *********
- */
-
 #include "libft.h"
 
-/**
- * @brief Allocates enough space for and appends string @p s2 to string @p s1
- * and returns the new string.
- * 
- * @param[in] s1 Null-terminated prefix string
- * @param[in] s2 Null-terminated suffix string
- * @retval char* Null-terminated combination of @p s1 and @p s2
- */
 char	*ft_strjoin(char const *s1, char const *s2)
 {
 	size_t	s1_len;
