@@ -10,6 +10,19 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+/**
+ * @file arr_len.c
+ * @dontinclude arr_len.c
+ * @line /\* *********
+ * @until /\* *********
+ */
+
+/**
+ * @brief Count number of elements in a null-terminated array.
+ * 
+ * @param arr Array to count
+ * @retval int Length of @p arr
+ */
 int	arr_len(void **arr)
 {
 	int	i;

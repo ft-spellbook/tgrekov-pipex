@@ -1,0 +1,9 @@
+*
+!.gitignore
+!/**/
+!*.c
+!*.h
+!Makefile
+docs/
+objs/
+.vscode/

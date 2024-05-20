@@ -10,8 +10,22 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+/**
+ * @file ft_isalnum.c
+ * @dontinclude ft_isalnum.c
+ * @line /\* *********
+ * @until /\* *********
+ */
+
 #include "libft.h"
 
+/**
+ * @brief Is c an alphanumeric character
+ * 
+ * @param[in] c Character to test
+ * @retval int <tt>@ref ft_isalpha"ft_isalpha"(c)
+ * || @ref ft_isdigit"ft_isdigit"(c)</tt>
+ */
 int	ft_isalnum(int c)
 {
 	return (ft_isalpha(c) || ft_isdigit(c));

@@ -10,6 +10,13 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+/**
+ * @file here_doc.c
+ * @dontinclude here_doc.c
+ * @line /\* *********
+ * @until /\* *********
+ */
+
 #include <unistd.h>
 #include "../../mandatory/utils/utils.h"
 #include "../../../includes/libft/ft_printf/ft_printf.h"
@@ -28,6 +35,14 @@ static int	_cmp(const char *s1, const char *s2)
 	return (ft_strncmp(s1, s2, len));
 }
 
+/**
+ * @brief Capture multiline input from @p stdin and write to a pipe readable
+ * from @p in_out[0] until a line containing only @p limiter is reached.
+ * 
+ * @param limiter Character to stop reading on
+ * @param in_out Input filedes, output filedes
+ * @retval int @p 0 on failure, @p 1 on success
+ */
 int	here_doc(char *limiter, int *in_out)
 {
 	int		fds[2];

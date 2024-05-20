@@ -10,8 +10,24 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+/**
+ * @file ft_memset.c
+ * @dontinclude ft_memset.c
+ * @line /\* *********
+ * @until /\* *********
+ */
+
 #include "libft.h"
 
+/**
+ * @brief Fills @p len bytes of byte string @p b with value @p c
+ * 
+ * @param[in, out] b Pointer to start of byte string
+ * @param[in] c Integer representation of value to write
+ * (cast to <tt>unsigned char</tt>)
+ * @param[in] len Number of bytes to write
+ * @retval void* @p b
+ */
 void	*ft_memset(void *b, int c, size_t len)
 {
 	while (len--)
