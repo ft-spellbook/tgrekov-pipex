@@ -6,7 +6,7 @@
 /*   By: tgrekov <tgrekov@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 13:32:09 by tgrekov           #+#    #+#             */
-/*   Updated: 2024/05/20 12:16:47 by tgrekov          ###   ########.fr       */
+/*   Updated: 2024/05/20 12:27:21 by tgrekov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@
 #include <string.h>
 #include <errno.h>
 #include <stdlib.h>
-#include "../../../includes/libft/libft.h"
-#include "../../../includes/libft/ft_printf/ft_printf.h"
+#include <libft.h>
+#include <ft_printf.h>
 #include "../utils/utils.h"
 
 char	**args_split(char const *s);

@@ -1,129 +1,109 @@
 NAME = pipex
-AR_NAME = $(NAME).a
-SOFT_NAME = pipex
 DEBUG_NAME = debug.out
-LIBFT_DIR = includes/libft/
 
-STANDARD_CC = cc
-STANDARD_FLAGS = -Wall -Wextra -Werror
-DEBUG_CC = cc
-DEBUG_FLAGS = -g -fsanitize=address,undefined,integer
+SRC_DIR = srcs
+OBJ_DIR = obj
+PATH_MANDATORY = mandatory
+PATH_BONUS = bonus
+INC_DIR = includes
+DEP_DIR = deps
 
-SRC_DIR = srcs/
-SRC_PATH_MANDATORY=mandatory/
-SRC_PATH_BONUS=bonus/
-OBJ_DIR = objs/
+LIBFT_DIR = $(DEP_DIR)/libft
+LIBFT = $(LIBFT_DIR)/libft.a
 
-SRC_NAMES =	main.c				\
-			utils/arr_cut.c		\
-			utils/arr_free.c	\
-			utils/arr_has.c		\
-			utils/arr_len.c		\
-			utils/dedupe.c		\
-			utils/err.c			\
-			parent/dispatcher.c	\
-			parent/get_paths.c	\
-			parent/wait_all.c	\
-			child/dispatch.c	\
-			child/get_cmd.c
-
-SRC_BONUS_NAMES =	main.c				\
+SRC_NAMES_SHARED =	utils/arr_cut.c		\
+					utils/arr_free.c	\
+					utils/arr_has.c		\
+					utils/arr_len.c		\
+					utils/dedupe.c		\
+					utils/err.c			\
+					parent/get_paths.c	\
+					parent/wait_all.c	\
+					child/dispatch.c	\
+					child/get_cmd.c
+SRC_NAMES_MANDATORY =	main.c				\
+						parent/dispatcher.c
+SRC_NAMES_BONUS =	main.c				\
 					parent/dispatcher.c	\
 					parent/here_doc.c
 
-#Make these actually do smth
-HEADER_NAMES = utils/utils.h
-
-HEADER_BONUS_NAMES =
+CC = cc
+CC_EXT_SRCS = $(LIBFT) $(MLX) -lglfw -L"/Users/$(USER)/.brew/opt/glfw/lib/"
+FLAGS = -I$(INC_DIR) -Wall -Wextra -Werror
+DEBUG_FLAGS = -I$(INC_DIR) -g -fsanitize=address,undefined,integer
 
 ################################################################################
 
-CC = $(STANDARD_CC)
-CFLAGS = $(STANDARD_FLAGS)
+OBJS_SHARED = $(SRC_NAMES_SHARED:%.c=$(OBJ_DIR)/$(PATH_MANDATORY)/%.o)
+OBJS_MANDATORY = $(SRC_NAMES_MANDATORY:%.c=$(OBJ_DIR)/$(PATH_MANDATORY)/%.o)
+OBJS_BONUS = $(SRC_NAMES_BONUS:%.c=$(OBJ_DIR)/$(PATH_BONUS)/%.o)
 
-SRCS = $(addprefix $(SRC_DIR)$(SRC_PATH_MANDATORY), $(SRC_NAMES))
-SRCS_BONUS = $(addprefix $(SRC_DIR)$(SRC_PATH_BONUS), $(SRC_BONUS_NAMES))
-
-OBJS = $(SRC_NAMES:%.c=$(OBJ_DIR)$(SRC_PATH_MANDATORY)%.o)
-OBJS_BONUS = $(SRC_BONUS_NAMES:%.c=$(OBJ_DIR)$(SRC_PATH_BONUS)%.o)
-
-OBJS_DEBUG = $(SRC_NAMES:%.c=$(OBJ_DIR)debug/$(SRC_PATH_MANDATORY)%.o)
-OBJS_DEBUG_BONUS = $(SRC_BONUS_NAMES:%.c=$(OBJ_DIR)debug/$(SRC_PATH_BONUS)%.o)
-
-HEADERS = $(addprefix $(SRC_DIR)$(SRC_PATH_MANDATORY), $(HEADER_NAMES))
-HEADERS_BONUS = $(addprefix $(SRC_DIR)$(SRC_PATH_BONUS), $(HEADER_BONUS_NAMES))
+OBJS_SHARED_DEBUG = $(SRC_NAMES_SHARED:%.c=$(OBJ_DIR)/debug/$(PATH_MANDATORY)/%.o)
+OBJS_MANDATORY_DEBUG = $(SRC_NAMES_MANDATORY:%.c=$(OBJ_DIR)/debug/$(PATH_MANDATORY)/%.o)
+OBJS_BONUS_DEBUG = $(SRC_NAMES_BONUS:%.c=$(OBJ_DIR)/debug/$(PATH_BONUS)/%.o)
 
 .PHONY: all bonus \
-debug_set debug debug_bonus \
+debug debug_bonus \
 clean .clean fclean re
-
-$(OBJ_DIR)%.o \
-$(OBJ_DIR)debug/%.o: $(SRC_DIR)%.c
-	@mkdir -p $(dir $@)
-	@echo "$(GREY)$(SOFT_NAME) $(DEFAULT)| $(GREEN)$< $(PURPLE)$(CFLAGS) $(RED)> $(GREY)$@$(DEFAULT)"
-	@$(CC) $(CFLAGS) -c $< -o $@
 
 ################################################################################
 
 all: $(NAME)
-	
-$(NAME): $(AR_NAME)
-	@$(CC) $(CFLAGS) $(AR_NAME) -o $(NAME)
-	@echo "$(GREY)$(SOFT_NAME) $(DEFAULT)| $(GREEN)Mandatory executable done$(DEFAULT)"
 
-$(AR_NAME): $(OBJS)
+$(OBJ_DIR)/debug/%.o: $(SRC_DIR)/%.c
+	@mkdir -p $(dir $@)
+	@echo "$(GREY)$(NAME) $(DEFAULT)| $(GREEN)$< $(PURPLE)$(DEBUG_FLAGS) $(RED)> $(GREY)$@$(DEFAULT)"
+	@$(CC) $(DEBUG_FLAGS) -c $< -o $@
+
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
+	@mkdir -p $(dir $@)
+	@echo "$(GREY)$(NAME) $(DEFAULT)| $(GREEN)$< $(PURPLE)$(FLAGS) $(RED)> $(GREY)$@$(DEFAULT)"
+	@$(CC) $(FLAGS) -c $< -o $@
+
+################################################################################
+
+$(LIBFT):
 	@make -C $(LIBFT_DIR) bonus
-	@cp $(LIBFT_DIR)libft.a $(AR_NAME)
-	@ar rcs $(AR_NAME) $^
-	@echo "$(GREY)$(SOFT_NAME) $(DEFAULT)| $(GREEN)Mandatory part done$(DEFAULT)"
 
-.bonus: $(AR_NAME) $(OBJS_BONUS)
-	@ar rcs $(AR_NAME) $(OBJS_BONUS)
+################################################################################
+
+$(NAME): $(LIBFT) $(OBJS_SHARED) $(OBJS_MANDATORY)
+	@$(CC) $(FLAGS) $(CC_EXT_SRCS) $(OBJS_SHARED) $(OBJS_MANDATORY) -o $(NAME)
+	@echo "$(GREY)$(NAME) $(DEFAULT)| $(GREEN)Mandatory done$(DEFAULT)"
+
+.bonus: $(LIBFT) $(OBJS_SHARED) $(OBJS_BONUS)
+	@$(CC) $(FLAGS) $(CC_EXT_SRCS) $(OBJS_SHARED) $(OBJS_BONUS) -o $(NAME)
 	@touch .bonus
-	@echo "$(GREY)$(SOFT_NAME) $(DEFAULT)| $(GREEN)Bonus part done$(DEFAULT)"
-	@$(CC) $(CFLAGS) $(AR_NAME) -o $(NAME)
-	@echo "$(GREY)$(SOFT_NAME) $(DEFAULT)| $(GREEN)Bonus executable done$(DEFAULT)"
+	@echo "$(GREY)$(NAME) $(DEFAULT)| $(GREEN)Bonus done$(DEFAULT)"
 
 bonus: .bonus
 
 ################################################################################
 
-$(DEBUG_NAME): $(OBJS_DEBUG)
-	@make -C $(LIBFT_DIR) bonus
-	@cp $(LIBFT_DIR)libft.a $(AR_NAME)
-	@ar rcs $(NAME) $^
-	@$(CC) $(CFLAGS) $(AR_NAME) -o $(DEBUG_NAME)
-	@touch .debug
-	@echo "$(GREY)$(SOFT_NAME) $(DEBUG_NAME) $(DEFAULT)| $(GREEN)Mandatory part done$(DEFAULT)"
+$(DEBUG_NAME): $(LIBFT) $(OBJS_SHARED_DEBUG) $(OBJS_MANDATORY_DEBUG)
+	@$(CC) $(DEBUG_FLAGS) $(CC_EXT_SRCS) $(OBJS_SHARED_DEBUG) $(OBJS_MANDATORY_DEBUG) -o $(DEBUG_NAME)
+	@echo "$(GREY)$(NAME) $(DEBUG_NAME) $(DEFAULT)| $(GREEN)Mandatory done$(DEFAULT)"
 
-debug_set:
-	$(eval CC = $(DEBUG_CC))
-	$(eval CFLAGS = $(DEBUG_FLAGS))
-
-.debug: debug_set $(DEBUG_NAME)
-
-debug: .debug
-
-.debug_bonus: debug_set $(AR_NAME) $(OBJS_DEBUG_BONUS)
-	@$(CC) $(CFLAGS) $(AR_NAME) -o $(DEBUG_NAME)
-	@touch .debug_bonus
-	@echo "$(GREY)$(SOFT_NAME) $(DEBUG_NAME) $(DEFAULT)| $(GREEN)Bonus part done$(DEFAULT)"
+.debug_bonus: $(LIBFT) $(OBJS_SHARED_DEBUG) $(OBJS_BONUS_DEBUG)
+	@$(CC) $(DEBUG_FLAGS) $(CC_EXT_SRCS) $(OBJS_SHARED_DEBUG) $(OBJS_BONUS_DEBUG) -o $(DEBUG_NAME)
+	@touch .bonus
+	@echo "$(GREY)$(NAME) $(DEBUG_NAME) $(DEFAULT)| $(GREEN)Bonus done$(DEFAULT)"
 
 debug_bonus: .debug_bonus
 
 ################################################################################
 
 .clean:
-	@echo "$(GREY)$(SOFT_NAME) $(DEFAULT)| $(RED)Removing $(DEFAULT)$(OBJ_DIR), .bonus, .debug, and .debug_bonus"
-	@rm -rf $(OBJ_DIR) .bonus .debug .debug_bonus
+	@echo "$(GREY)$(NAME) $(DEFAULT)| $(RED)Removing $(DEFAULT)$(OBJ_DIR), .bonus, and .debug_bonus"
+	@rm -rf $(OBJ_DIR) .bonus .debug_bonus
 
 clean: .clean
 	@make -C $(LIBFT_DIR) clean
 	
 fclean: .clean
 	@make -C $(LIBFT_DIR) fclean
-	@echo "$(GREY)$(SOFT_NAME) $(DEFAULT)| $(RED)Removing $(DEFAULT)$(NAME), $(AR_NAME), and $(DEBUG_NAME)"
-	@rm -rf $(NAME) $(AR_NAME) $(DEBUG_NAME)
+	@echo "$(GREY)$(NAME) $(DEFAULT)| $(RED)Removing $(DEFAULT)$(NAME) and $(DEBUG_NAME)"
+	@rm -f $(NAME) $(DEBUG_NAME)
 
 re: fclean all
 

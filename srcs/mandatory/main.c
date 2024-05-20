@@ -6,7 +6,7 @@
 /*   By: tgrekov <tgrekov@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 13:59:01 by tgrekov           #+#    #+#             */
-/*   Updated: 2024/05/16 10:44:56 by tgrekov          ###   ########.fr       */
+/*   Updated: 2024/05/20 12:27:56 by tgrekov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include <errno.h>
 #include <stdlib.h>
 #include "utils/utils.h"
-#include "../../includes/libft/ft_printf/ft_printf.h"
+#include <ft_printf.h>
 
 char	**get_paths(char **envp);
 int		dispatcher(char **paths, char **argv, char **envp, int *in_out);

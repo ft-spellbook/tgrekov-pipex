@@ -6,7 +6,7 @@
 /*   By: tgrekov <tgrekov@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 13:47:02 by tgrekov           #+#    #+#             */
-/*   Updated: 2024/05/09 20:01:20 by tgrekov          ###   ########.fr       */
+/*   Updated: 2024/05/20 12:27:30 by tgrekov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 #include <unistd.h>
 #include <stdlib.h>
 #include "../utils/utils.h"
-#include "../../../includes/libft/libft.h"
+#include <libft.h>
 
 /**
  * @brief Find and return the first existing file with called @p name from the

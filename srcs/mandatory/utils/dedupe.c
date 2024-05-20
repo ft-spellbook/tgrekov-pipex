@@ -6,7 +6,7 @@
 /*   By: tgrekov <tgrekov@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 06:05:01 by tgrekov           #+#    #+#             */
-/*   Updated: 2024/05/06 14:58:43 by tgrekov          ###   ########.fr       */
+/*   Updated: 2024/05/20 12:27:49 by tgrekov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
  */
 
 #include <stdlib.h>
-#include "../../../includes/libft/libft.h"
+#include <libft.h>
 #include "utils.h"
 
 /**

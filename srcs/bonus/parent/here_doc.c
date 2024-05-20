@@ -6,7 +6,7 @@
 /*   By: tgrekov <tgrekov@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 12:01:21 by tgrekov           #+#    #+#             */
-/*   Updated: 2024/05/02 12:12:09 by tgrekov          ###   ########.fr       */
+/*   Updated: 2024/05/20 12:26:53 by tgrekov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@
 
 #include <unistd.h>
 #include "../../mandatory/utils/utils.h"
-#include "../../../includes/libft/ft_printf/ft_printf.h"
-#include "../../../includes/libft/get_next_line_bonus.h"
-#include "../../../includes/libft/libft.h"
+#include <ft_printf.h>
+#include <get_next_line_bonus.h>
+#include <libft.h>
 
 static int	_cmp(const char *s1, const char *s2)
 {

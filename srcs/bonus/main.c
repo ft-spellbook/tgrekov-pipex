@@ -6,7 +6,7 @@
 /*   By: tgrekov <tgrekov@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 13:59:01 by tgrekov           #+#    #+#             */
-/*   Updated: 2024/05/16 11:07:43 by tgrekov          ###   ########.fr       */
+/*   Updated: 2024/05/20 12:27:07 by tgrekov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@
 #include <errno.h>
 #include <stdlib.h>
 #include "../mandatory/utils/utils.h"
-#include "../../includes/libft/libft.h"
-#include "../../includes/libft/ft_printf/ft_printf.h"
+#include <libft.h>
+#include <ft_printf.h>
 
 int		here_doc(char *limiter, int *in_out);
 char	**get_paths(char **envp);
