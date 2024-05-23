@@ -6,7 +6,7 @@
 /*   By: tgrekov <tgrekov@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/23 08:18:15 by tgrekov           #+#    #+#             */
-/*   Updated: 2024/05/09 19:32:13 by tgrekov          ###   ########.fr       */
+/*   Updated: 2024/05/23 05:11:33 by tgrekov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,15 @@ static int	_fork(int *i_n, int **pids_pair, int last_out, char ***str_arrs)
 	return (pid);
 }
 
+static int	_wait_all(int *pids, int n, int override)
+{
+	int	status;
+
+	status = wait_all(pids, n, override);
+	free(pids);
+	return (status);
+}
+
 /**
  * @brief Dispatch @p n child processes with argument strings
  * @p str_arrs[1][i], environment pointer @p str_arrs[2], where @p stdin
@@ -98,6 +107,5 @@ int	dispatcher(int n, char ***str_arrs, int *in_out)
 			break ;
 		i++;
 	}
-	free(pids);
-	return (wait_all(pids, i, !last_out));
+	return (_wait_all(pids, i, !last_out));
 }
