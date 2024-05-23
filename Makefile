@@ -28,7 +28,7 @@ SRC_NAMES_BONUS =	main.c				\
 					parent/here_doc.c
 
 CC = cc
-CC_EXT_SRCS = $(LIBFT) $(MLX) -lglfw -L"/Users/$(USER)/.brew/opt/glfw/lib/"
+CC_EXT_SRCS = $(LIBFT)
 FLAGS = -I$(INC_DIR) -Wall -Wextra -Werror
 DEBUG_FLAGS = -I$(INC_DIR) -g -fsanitize=address,undefined,integer
 
